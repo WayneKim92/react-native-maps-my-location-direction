@@ -1,6 +1,6 @@
 {
   "name": "react-native-maps-my-location-direction",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Do you want to display your location and direction in react-native-maps?",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
