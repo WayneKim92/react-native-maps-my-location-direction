@@ -20,7 +20,7 @@ import { MyLocationDirection } from 'react-native-maps-my-location-direction';
 // ...
 <MyLocationDirection
   img={require('./assets/arrow.png')}
-  color={'#00AAFF'}  // default #00AAFF
+  color={'#00AAFF'}  // default undefined
   height={100} // default 100
   width={100} // default 100
   locationFetchInterval={1000} // default 1000
