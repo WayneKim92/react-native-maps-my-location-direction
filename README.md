@@ -1,6 +1,7 @@
 # react-native-maps-my-location-direction
 
 Do you want to display your location and direction in react-native-maps?
+![my-location-direction](https://github.com/WayneKim92/react-native-maps-my-location-direction/assets/75321423/1b1d90c4-f33d-4cc2-a39e-42c5381c120c)
 
 ## Installation
 
