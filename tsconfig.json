@@ -2,7 +2,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
-      "react-native-my-location-direction": ["./src/index"]
+      "react-native-maps-my-location-direction": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

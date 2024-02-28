@@ -1,21 +1,30 @@
-# react-native-my-location-direction
+# react-native-maps-my-location-direction
 
 Do you want to display your location and direction in react-native-maps?
 
 ## Installation
 
 ```sh
-npm install react-native-my-location-direction
+npm install react-native-maps-my-location-direction
+# This package also requires the packages below:
+npm install react-native-maps
+npm install react-native-compass-heading
+npm install react-native-geolocation-service
 ```
 
 ## Usage
 
 ```js
-import { multiply } from 'react-native-my-location-direction';
+import { MyLocationDirection } from 'react-native-maps-my-location-direction';
 
 // ...
-
-const result = await multiply(3, 7);
+<MyLocationDirection
+  img={require('./assets/arrow.png')}
+  color={'#00AAFF'}  // default #00AAFF
+  height={100} // default 100
+  width={100} // default 100
+  locationFetchInterval={1000} // default 1000
+/>
 ```
 
 ## Contributing

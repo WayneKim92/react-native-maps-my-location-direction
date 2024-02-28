@@ -1,5 +1,5 @@
 {
-  "name": "react-native-my-location-direction",
+  "name": "react-native-maps-my-location-direction",
   "version": "0.1.0",
   "description": "Do you want to display your location and direction in react-native-maps?",
   "main": "lib/commonjs/index",
@@ -26,11 +26,9 @@
     "!**/.*"
   ],
   "scripts": {
-    "example": "yarn workspace react-native-my-location-direction-example",
     "test": "jest",
     "typecheck": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
-    "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib",
     "prepare": "bob build",
     "release": "release-it"
   },
@@ -41,14 +39,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/WayneKim92/react-native-my-location-direction.git"
+    "url": "git+https://github.com/WayneKim92/react-native-maps-my-location-direction.git"
   },
   "author": "WayneKim92 <eunchan0817@gamil.com> (https://github.com/WayneKim92)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/WayneKim92/react-native-my-location-direction/issues"
+    "url": "https://github.com/WayneKim92/react-native-maps-my-location-direction/issues"
   },
-  "homepage": "https://github.com/WayneKim92/react-native-my-location-direction#readme",
+  "homepage": "https://github.com/WayneKim92/react-native-maps-my-location-direction#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -69,6 +67,9 @@
     "react": "18.2.0",
     "react-native": "0.73.5",
     "react-native-builder-bob": "^0.20.0",
+    "react-native-compass-heading": "^1.5.0",
+    "react-native-geolocation-service": "^5.3.1",
+    "react-native-maps": "^1.10.3",
     "release-it": "^15.0.0",
     "turbo": "^1.10.7",
     "typescript": "^5.2.2"
@@ -78,7 +79,10 @@
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-compass-heading": "*",
+    "react-native-geolocation-service": "*",
+    "react-native-maps": "*"
   },
   "workspaces": [
     "example"
