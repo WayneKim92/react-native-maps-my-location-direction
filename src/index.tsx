@@ -18,7 +18,7 @@ interface MyLocationDirectionProps {
 
 export function MyLocationDirection(props: MyLocationDirectionProps) {
   const {
-    color = '#00AAFF',
+    color,
     height = 100,
     width = 100,
     locationFetchInterval = 1000,
