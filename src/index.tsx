@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Image } from 'react-native';
+import { Image, Platform } from 'react-native';
 import { Marker } from 'react-native-maps';
 // @ts-ignore
 import CompassHeading from 'react-native-compass-heading';
@@ -64,7 +64,10 @@ export function MyLocationDirection(props: MyLocationDirectionProps) {
   }, []);
 
   return (
-    <Marker coordinate={coordinate}>
+    <Marker
+      coordinate={coordinate}
+      anchor={Platform.OS === 'ios' ? undefined : { x: 0.5, y: 0.5 }} // AOS 중심점 안 맞는 문제로 인하여 필요
+    >
       {/*@ts-ignore*/}
       <Image
         source={img}
