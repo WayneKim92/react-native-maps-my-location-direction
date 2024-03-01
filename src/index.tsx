@@ -3,7 +3,7 @@ import { Image } from 'react-native';
 import { Marker } from 'react-native-maps';
 // @ts-ignore
 import CompassHeading from 'react-native-compass-heading';
-import Geolocation from 'react-native-geolocation-service';
+import Geolocation, { clearWatch } from 'react-native-geolocation-service';
 // types
 import type { ColorValue } from 'react-native/Libraries/StyleSheet/StyleSheet';
 import type { ImageSourcePropType } from 'react-native/Libraries/Image/Image';
@@ -12,19 +12,14 @@ interface MyLocationDirectionProps {
   color?: ColorValue | undefined;
   width?: number;
   height?: number;
-  locationFetchInterval?: number;
   img: ImageSourcePropType;
 }
 
 export function MyLocationDirection(props: MyLocationDirectionProps) {
-  const {
-    color,
-    height = 100,
-    width = 100,
-    locationFetchInterval = 1000,
-    img,
-  } = props;
+  const { color, height = 100, width = 100, img } = props;
+  // @ts-ignore
   const [coordinate, setCoordinate] = useState({ latitude: 0, longitude: 0 });
+  // @ts-ignore
   const [angle, setAngle] = useState(0);
 
   useEffect(() => {
@@ -43,37 +38,34 @@ export function MyLocationDirection(props: MyLocationDirectionProps) {
   }, []);
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      Geolocation.getCurrentPosition(
-        (position) => {
-          setCoordinate({
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-          });
+    const watchId = Geolocation.watchPosition(
+      (position) => {
+        setCoordinate({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        });
+      },
+      (error) => {
+        console.log('[MyLocationDirection] error', error);
+      },
+      {
+        accuracy: {
+          android: 'high',
+          ios: 'best',
         },
-        (error) => {
-          console.log('[MyLocationDirection] error', error);
-        },
-        {
-          accuracy: {
-            android: 'high',
-            ios: 'best',
-          },
-          enableHighAccuracy: true,
-          distanceFilter: 0,
-          forceRequestLocation: true,
-          forceLocationManager: true,
-        }
-      );
-    }, locationFetchInterval);
+        enableHighAccuracy: true,
+        distanceFilter: 0,
+      }
+    );
 
     return () => {
-      clearInterval(intervalId);
+      clearWatch(watchId);
     };
-  }, [locationFetchInterval]);
+  }, []);
 
   return (
     <Marker coordinate={coordinate}>
+      {/*@ts-ignore*/}
       <Image
         source={img}
         style={{
